@@ -34,6 +34,7 @@ public class BookController {
     BeanUtils.copyProperties(bookForm,  form);
     return "books/edit";
   }
+
   @PostMapping(path = "edit")
   String edit(@RequestParam Integer id, BookForm form) {
     bookService.update(form);
@@ -48,6 +49,7 @@ public class BookController {
   String goToTop() {
     return "redirect:/books";
   }
+
 }
 
 

@@ -9,14 +9,16 @@ public class BookService {
   @Autowired
   BookRepository bookRepository;
   public BookForm create(BookForm bookForm) {
-    bookForm.setId(bookRepository.getBookId());
-    BookBean bookBean = new BookBean(null, null, null, null, null);
-    BeanUtils.copyProperties(bookForm, bookBean);
-    bookRepository.create(bookBean);
-    return bookForm;
-  }
+	    bookForm.setId(bookRepository.getBookId());
+	    BookBean bookBean = new BookBean();
+	    BeanUtils.copyProperties(bookForm, bookBean);
+	    bookRepository.create(bookBean);
+	    return bookForm;
+	  }
+
+
   public BookForm update(BookForm bookForm) {
-	    BookBean bookBean = new BookBean(null, null, null, null, null);
+	    BookBean bookBean = new BookBean();
 	    BeanUtils.copyProperties(bookForm, bookBean);
 	    bookRepository.update(bookBean);
 	    return bookForm;
@@ -38,4 +40,6 @@ public class BookService {
 	    BeanUtils.copyProperties(bookBean, bookForm);
 	    return bookForm;
 	  }
+
+
 	}
