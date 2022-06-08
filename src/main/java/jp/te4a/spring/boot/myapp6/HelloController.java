@@ -17,13 +17,14 @@ public class HelloController {
         model.addAttribute("msg", "this is setting message");
         return "index";
     }
+    
     @RequestMapping(value="/post", method=RequestMethod.POST)
      public ModelAndView postForm(@RequestParam("id") String id, 
     @RequestParam("title") String title,@RequestParam("writter") String writter, 
     @RequestParam("publisher") String publisher,@RequestParam("price") String price) {
          ModelAndView mv = new ModelAndView("index");
          bookService.save(new BookBean(Integer.valueOf(id), title, writter, publisher, 
-                                                                                                                                 Integer.valueOf(price)));
+                                                          Integer.valueOf(price)));
         StringBuffer buff = new StringBuffer();
         buff.append("<HR>");
         for(BookBean bean:bookService.findAll()) {
